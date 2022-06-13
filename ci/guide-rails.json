@@ -1,6 +1,6 @@
 {
 	"metadata": {
-		"version": 1
+		"version": 2
 	},
 	"application": {
 		"name": "go-crud",
@@ -75,7 +75,7 @@
 							{
 								"name": "Convert coverage",
 								"definition": "Convert coverage",
-								"command": "#cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\ngocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
+								"command": "#cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\n#gocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
 								"properties": null
 							},
 							{
@@ -93,13 +93,7 @@
 		"exit_actions": {},
 		"default_properties": [],
 		"deployment_files": [],
-		"application_init": {},
-		"releases": [
-			{
-				"name": "consul",
-				"version": "latest"
-			}
-		]
+		"application_init": {}
 	},
 	"organization": {
 		"orgname": "GR-Product"
