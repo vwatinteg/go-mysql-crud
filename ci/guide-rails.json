@@ -110,16 +110,6 @@
 				"exit_actions": {},
 				"properties": [
 					{
-						"name": "DB_HOST",
-						"value": "db-((application.name))-((application.branch)).query.consul",
-						"type": "string"
-					},
-					{
-						"name": "auth.rootPassword",
-						"value": "((db_root_password))",
-						"type": "string"
-					},
-					{
 						"name": "auth.username",
 						"value": "((db_user))",
 						"type": "string"
