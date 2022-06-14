@@ -51,6 +51,7 @@
 						"helm_package": {
 							"pkg_source": 3,
 							"chart_name": "mysql",
+							"chart_version": "8.8.32",
 							"repository_url": "https://charts.bitnami.com/bitnami"
 						}
 					}
@@ -255,6 +256,7 @@
 									{
 										"pkg_source": 3,
 										"chart_name": "mysql",
+										"chart_version": "8.8.32",
 										"repository_url": "https://charts.bitnami.com/bitnami",
 										"release_name": "mysql-((application.name))-((application.branch))"
 									}
