@@ -200,6 +200,79 @@
 					{
 						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
 						"docker_registry_alias_id": "cc9edc73-f30b-4c9a-5d01-e03f7930a904",
+						"name": "db-((application.name))",
+						"cluster_name": "",
+						"namespace": "((application.name))-((application.branch))",
+						"replicas": 1,
+						"containers": [
+							{
+								"name": "((application.name))",
+								"image": "guide-rails/((application.name)):((application.version))",
+								"ports": [
+									{
+										"name": "app",
+										"hostPort": 8005,
+										"containerPort": 8005,
+										"protocol": "TCP"
+									}
+								],
+								"resources": {},
+								"imagePullPolicy": "Always"
+							}
+						],
+						"ingress": {
+							"metadata": {
+								"creationTimestamp": null
+							},
+							"spec": {
+								"rules": [
+									{
+										"http": {
+											"paths": [
+												{
+													"path": "/",
+													"backend": {
+														"servicePort": 0
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"status": {
+								"loadBalancer": {}
+							}
+						},
+						"load_balancing_type": 2,
+						"service_name": "((application.name))-((application.branch))",
+						"type": "Deployment",
+						"deploy_application": false,
+						"helm_packages": [
+							{
+								"name": "mysql",
+								"type": 2,
+								"helmPackages": [
+									{
+										"pkg_source": 3,
+										"chart_name": "mysql",
+										"chart_version": "8.8.32",
+										"repository_url": "https://charts.bitnami.com/bitnami",
+										"release_name": "mysql-go-mysql-crud-iso-main"
+									}
+								]
+							}
+						],
+						"properties": [
+							{
+								"name": "service.annotations",
+								"value": "consul.hashicorp.com/service-name:  mysql-go-mysql-crud-iso-main"
+							}
+						]
+					},
+					{
+						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
+						"docker_registry_alias_id": "cc9edc73-f30b-4c9a-5d01-e03f7930a904",
 						"name": "((application.name))",
 						"cluster_name": "",
 						"namespace": "((application.name))-((application.branch))",
@@ -247,28 +320,7 @@
 						"load_balancing_type": 2,
 						"service_name": "((application.name))-((application.branch))",
 						"type": "Deployment",
-						"deploy_application": true,
-						"helm_packages": [
-							{
-								"name": "mysql",
-								"type": 2,
-								"helmPackages": [
-									{
-										"pkg_source": 3,
-										"chart_name": "mysql",
-										"chart_version": "8.8.32",
-										"repository_url": "https://charts.bitnami.com/bitnami",
-										"release_name": "mysql-go-mysql-crud-iso-main"
-									}
-								]
-							}
-						],
-						"properties": [
-							{
-								"name": "service.annotations",
-								"value": "{\"consul.hashicorp.com/service-name\":  \"mysql-go-mysql-crud-iso-main\"}"
-							}
-						]
+						"deploy_application": true
 					}
 				],
 				"deployment_target": 2
