@@ -152,6 +152,11 @@
 						"name": "db.name",
 						"value": "((auth.database))",
 						"type": "string"
+					},
+					{
+						"name": "persistence.enabled",
+						"value": false,
+						"type": "boolean"
 					}
 				],
 				"deployment_strategy": {
