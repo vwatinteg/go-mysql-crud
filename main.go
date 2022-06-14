@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/s1s1ty/go-mysql-crud/driver"
-	ph "github.com/s1s1ty/go-mysql-crud/handler/http"
+	"github.com/vwatinteg/go-mysql-crud/driver"
+	ph "github.com/vwatinteg/go-mysql-crud/handler/http"
 )
 
 func main() {

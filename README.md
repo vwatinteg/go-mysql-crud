@@ -42,7 +42,7 @@ Sample crud operation using Golang and MySql
 First clone the repo then go to go-mysql-crud folder. After that build your image and run by docker. Make sure you have docker in your machine. 
 
 ```
-git clone https://github.com/s1s1ty/go-mysql-crud.git
+git clone https://github.com/vwatinteg/go-mysql-crud.git
 
 cd go-mysql-crud
 

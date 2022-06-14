@@ -3,7 +3,7 @@ package repsitory
 import (
 	"context"
 
-	"github.com/s1s1ty/go-mysql-crud/models"
+	"github.com/vwatinteg/go-mysql-crud/models"
 )
 
 // PostRepo explain...

@@ -7,10 +7,10 @@ import (
 	"strconv"
 
 	"github.com/go-chi/chi"
-	"github.com/s1s1ty/go-mysql-crud/driver"
-	models "github.com/s1s1ty/go-mysql-crud/models"
-	repository "github.com/s1s1ty/go-mysql-crud/repository"
-	post "github.com/s1s1ty/go-mysql-crud/repository/post"
+	"github.com/vwatinteg/go-mysql-crud/driver"
+	models "github.com/vwatinteg/go-mysql-crud/models"
+	repository "github.com/vwatinteg/go-mysql-crud/repository"
+	post "github.com/vwatinteg/go-mysql-crud/repository/post"
 )
 
 // NewPostHandler ...
