@@ -51,6 +51,7 @@
 						"helm_package": {
 							"pkg_source": 3,
 							"chart_name": "mysql",
+							"chart_version": "8.8.32",
 							"repository_url": "https://charts.bitnami.com/bitnami"
 						}
 					}
@@ -109,16 +110,6 @@
 				"exit_actions": {},
 				"properties": [
 					{
-						"name": "DB_HOST",
-						"value": "db-((application.name))-((application.branch)).query.consul",
-						"type": "string"
-					},
-					{
-						"name": "auth.rootPassword",
-						"value": "((db_root_password))",
-						"type": "string"
-					},
-					{
 						"name": "auth.username",
 						"value": "((db_user))",
 						"type": "string"
@@ -157,6 +148,16 @@
 						"name": "persistence.enabled",
 						"value": false,
 						"type": "boolean"
+					},
+					{
+						"name": "gr.helm.wait.timeout",
+						"value": "2m",
+						"type": "string"
+					},
+					{
+						"name": "auth.rootPassword",
+						"value": "((db_root_password))",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
@@ -250,6 +251,7 @@
 									{
 										"pkg_source": 3,
 										"chart_name": "mysql",
+										"chart_version": "8.8.32",
 										"repository_url": "https://charts.bitnami.com/bitnami",
 										"release_name": "mysql-((application.name))-((application.branch))"
 									}
