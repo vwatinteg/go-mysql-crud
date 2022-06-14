@@ -160,8 +160,8 @@
 								"ports": [
 									{
 										"name": "app",
-										"hostPort": 5001,
-										"containerPort": 5001,
+										"hostPort": 8005,
+										"containerPort": 8005,
 										"protocol": "TCP"
 									}
 								],
