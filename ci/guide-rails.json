@@ -107,6 +107,13 @@
 					"Build"
 				],
 				"exit_actions": {},
+				"properties": [
+					{
+						"name": "DB_HOST",
+						"value": "db-((application.name))-((application.branch)).query.consul",
+						"type": "string"
+					}
+				],
 				"deployment_strategy": {
 					"canaries": 1,
 					"max_in_flight": 1,
@@ -122,6 +129,20 @@
 					{
 						"name": "application.name",
 						"value": "((application.name))"
+					}
+				],
+				"tasks": [
+					{
+						"name": "isolation",
+						"steps": [
+							{
+								"name": "check",
+								"definition": "check",
+								"command": "echo \"Testing DNS ${DB_HOST}\"\ngetent hosts ${DB_HOST}\n",
+								"properties": null
+							}
+						],
+						"docker_options": {}
 					}
 				],
 				"k8s_instance_groups": [
@@ -195,10 +216,6 @@
 								"name": "DB_PORT",
 								"value": "3306",
 								"type": "number"
-							},
-							{
-								"name": "DB_HOST",
-								"value": "((application.name))-((application.branch)).query.consul"
 							},
 							{
 								"name": "DB_NAME",
