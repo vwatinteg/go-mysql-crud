@@ -258,9 +258,15 @@
 										"chart_name": "mysql",
 										"chart_version": "8.8.32",
 										"repository_url": "https://charts.bitnami.com/bitnami",
-										"release_name": "mysql-((application.name))-iso-((application.branch))"
+										"release_name": "mysql-go-mysql-crud-iso-main"
 									}
 								]
+							}
+						],
+						"properties": [
+							{
+								"name": "service.annotations",
+								"value": "{\"consul.hashicorp.com/service-name\":  \"mysql-go-mysql-crud-iso-main\"}"
 							}
 						]
 					}
