@@ -158,6 +158,11 @@
 						"name": "auth.rootPassword",
 						"value": "((db_root_password))",
 						"type": "string"
+					},
+					{
+						"name": "consul.servicename",
+						"value": "((application.name))-iso-((application.branch))",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
@@ -253,7 +258,7 @@
 										"chart_name": "mysql",
 										"chart_version": "8.8.32",
 										"repository_url": "https://charts.bitnami.com/bitnami",
-										"release_name": "mysql-((application.name))-((application.branch))"
+										"release_name": "mysql-((application.name))-iso-((application.branch))"
 									}
 								]
 							}
