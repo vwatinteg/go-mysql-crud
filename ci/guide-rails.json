@@ -102,6 +102,7 @@
 			{
 				"name": "Isolation",
 				"segment_type": "isolation",
+				"persistent": true,
 				"run_after": [
 					"Build"
 				],
@@ -192,7 +193,8 @@
 						"properties": [
 							{
 								"name": "DB_PORT",
-								"value": "3306"
+								"value": "3306",
+								"type": "number"
 							},
 							{
 								"name": "DB_HOST",
