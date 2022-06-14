@@ -153,6 +153,11 @@
 						"name": "gr.helm.wait.timeout",
 						"value": "2m",
 						"type": "string"
+					},
+					{
+						"name": "auth.rootPassword",
+						"value": "((db_root_password))",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
