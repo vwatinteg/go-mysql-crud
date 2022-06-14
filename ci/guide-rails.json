@@ -157,6 +157,11 @@
 						"name": "persistence.enabled",
 						"value": false,
 						"type": "boolean"
+					},
+					{
+						"name": "gr.helm.wait.timeout",
+						"value": "2m",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
