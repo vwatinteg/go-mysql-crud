@@ -112,6 +112,26 @@
 						"name": "DB_HOST",
 						"value": "db-((application.name))-((application.branch)).query.consul",
 						"type": "string"
+					},
+					{
+						"name": "auth.rootPassword",
+						"value": "((db_root_password))",
+						"type": "string"
+					},
+					{
+						"name": "auth.username",
+						"value": "((db_user))",
+						"type": "string"
+					},
+					{
+						"name": "auth.password",
+						"value": "((db_user_password))",
+						"type": "string"
+					},
+					{
+						"name": "auth.database",
+						"value": "go-mysql-crud",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
@@ -209,21 +229,6 @@
 										"release_name": "mysql-((application.name))-((application.branch))"
 									}
 								]
-							}
-						],
-						"properties": [
-							{
-								"name": "DB_PORT",
-								"value": "3306",
-								"type": "number"
-							},
-							{
-								"name": "DB_NAME",
-								"value": "go-mysql-crud"
-							},
-							{
-								"name": "DB_PASS",
-								"value": "((db_pass))"
 							}
 						]
 					}
