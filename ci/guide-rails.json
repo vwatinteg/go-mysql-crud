@@ -41,7 +41,7 @@
 						"name": "((application.name))",
 						"downloads": [],
 						"files": [
-							"dist/((application.name))*"
+							"dist/*"
 						]
 					},
 					{
@@ -91,7 +91,7 @@
 							{
 								"name": "Build",
 								"definition": "Build",
-								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags \"-static\"' -v -o dist/((application.name))",
+								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags \"-static\"' -o dist/go-mysql-crud",
 								"properties": null
 							}
 						],
