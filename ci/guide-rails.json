@@ -132,6 +132,26 @@
 						"name": "auth.database",
 						"value": "go-mysql-crud",
 						"type": "string"
+					},
+					{
+						"name": "db.host",
+						"value": "db-((application.name))-((application.branch)).query.consul",
+						"type": "string"
+					},
+					{
+						"name": "db.pass",
+						"value": "((auth.password))",
+						"type": "string"
+					},
+					{
+						"name": "db.port",
+						"value": "3306",
+						"type": "string"
+					},
+					{
+						"name": "db.name",
+						"value": "((auth.database))",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
