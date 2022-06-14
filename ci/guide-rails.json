@@ -91,7 +91,7 @@
 							{
 								"name": "Build",
 								"definition": "Build",
-								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags \"-static\"' go build -v -o dist/go-mysql-crud",
+								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags \"-static\"' go build -v -o dist/((application.name))",
 								"properties": null
 							}
 						],
