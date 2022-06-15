@@ -11,7 +11,7 @@ func init() {}
 
 func TestMain(t *testing.T) {
 
-	if cast.ToBool(os.Getenv("TEST_COVER")) {
+	if !cast.ToBool(os.Getenv("TEST_COVER")) {
 		return
 	}
 
