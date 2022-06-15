@@ -603,7 +603,16 @@
 		],
 		"exit_actions": {},
 		"default_properties": [],
-		"deployment_files": [],
+		"deployment_files": [
+			{
+				"source_path": "ci/bin/run-integration-test.sh",
+				"target_path": "bin/run-integration-test.sh"
+			},
+			{
+				"source_path": "ci/bin/start-instrumented.sh",
+				"target_path": "bin/start-instrumented.sh"
+			}
+		],
 		"application_init": {}
 	},
 	"organization": {
