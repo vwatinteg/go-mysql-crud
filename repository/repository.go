@@ -7,6 +7,7 @@ import (
 )
 
 // PostRepo explain...
+//go:generate mockgen -source repository.go -destination=mock/mock_postrepo.go -package=mock
 type PostRepo interface {
 	Fetch(ctx context.Context, num int64) ([]*models.Post, error)
 	GetByID(ctx context.Context, id int64) (*models.Post, error)

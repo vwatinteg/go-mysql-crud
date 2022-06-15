@@ -20,6 +20,11 @@ func NewPostHandler(db *driver.DB) *Post {
 	}
 }
 
+// SetPostHandler ONLY FOR TESTING...
+func (p *Post) SetPostHandler(postRepo repository.PostRepo) {
+	p.repo = postRepo
+}
+
 // Post ...
 type Post struct {
 	repo repository.PostRepo
