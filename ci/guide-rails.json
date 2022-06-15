@@ -516,7 +516,7 @@
 						],
 						"properties": [
 							{
-								"name": "service.annotations",
+								"name": "primary.service.annotations",
 								"value": "consul.hashicorp.com/service-name:  mysql-go-mysql-crud-iso-main"
 							}
 						]
