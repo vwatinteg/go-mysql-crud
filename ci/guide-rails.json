@@ -322,7 +322,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"cd ((application.job.dir))/bin\n./init-db.sh\ncd -\n\n((application.job.dir))/bin/start-instrumented.sh"
+									"((application.job.dir))/bin/init-db.sh\n((application.job.dir))/bin/start-instrumented.sh"
 								],
 								"ports": [
 									{
@@ -552,7 +552,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"cd ((application.job.dir))/bin\n./init-db.sh\ncd -\n\n/bin/go-mysql-crud"
+									"((application.job.dir))/bininit-db.sh\n\n/bin/go-mysql-crud"
 								],
 								"ports": [
 									{
