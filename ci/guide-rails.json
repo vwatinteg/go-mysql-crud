@@ -158,11 +158,6 @@
 						"name": "auth.rootPassword",
 						"value": "((db_root_password))",
 						"type": "string"
-					},
-					{
-						"name": "consul.servicename",
-						"value": "((application.name))-iso-((application.branch))",
-						"type": "string"
 					}
 				],
 				"deployment_strategy": {
@@ -320,7 +315,13 @@
 						"load_balancing_type": 2,
 						"service_name": "((application.name))-((application.branch))",
 						"type": "Deployment",
-						"deploy_application": true
+						"deploy_application": true,
+						"properties": [
+							{
+								"name": "consul.servicename",
+								"value": "((application.name))-iso-((application.branch))"
+							}
+						]
 					}
 				],
 				"deployment_target": 2
