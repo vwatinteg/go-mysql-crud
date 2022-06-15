@@ -54,6 +54,13 @@
 							"chart_version": "8.8.32",
 							"repository_url": "https://charts.bitnami.com/bitnami"
 						}
+					},
+					{
+						"name": "intergration",
+						"downloads": [],
+						"files": [
+							"test/integration/((application.name))-integration.test"
+						]
 					}
 				],
 				"instance_tags": [
@@ -80,13 +87,13 @@
 							{
 								"name": "Unit Tests",
 								"definition": "Unit Tests",
-								"command": "set -o pipefail\n#ginkgo -cover -r -v -skipPackage=pb,test,mock,proto -outputdir=./ | tee ginkgo.output",
+								"command": "set -o pipefail\nginkgo -cover -r -v -skipPackage=pb,test,mock,proto -outputdir=./ | tee ginkgo.output",
 								"properties": null
 							},
 							{
 								"name": "Convert coverage",
 								"definition": "Convert coverage",
-								"command": "#cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\n#gocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
+								"command": "cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\n#gocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
 								"properties": null
 							},
 							{
@@ -94,11 +101,231 @@
 								"definition": "Build",
 								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags \"-static\"' -o dist/go-mysql-crud",
 								"properties": null
+							},
+							{
+								"name": "Build Integration Test",
+								"definition": "Build Integration Test",
+								"command": "cd test/integration\n\nCGO_ENABLED=0 GOOS=linux GOARCH=amd64 go test -a -tags netgo -ldflags '-w -extldflags \"-static\"' -c -coverpkg=all -covermode=count -o ((application.name))-integration.test",
+								"properties": []
 							}
 						],
 						"docker_options": {}
 					}
 				]
+			},
+			{
+				"name": "Integration",
+				"segment_type": "integration",
+				"persistent": false,
+				"run_after": [
+					"Build"
+				],
+				"exit_actions": {},
+				"properties": [
+					{
+						"name": "auth.username",
+						"value": "((db_user))",
+						"type": "string"
+					},
+					{
+						"name": "auth.password",
+						"value": "((db_user_password))",
+						"type": "string"
+					},
+					{
+						"name": "auth.database",
+						"value": "go-mysql-crud",
+						"type": "string"
+					},
+					{
+						"name": "db.host",
+						"value": "db-((application.name))-((application.branch)).query.consul",
+						"type": "string"
+					},
+					{
+						"name": "db.pass",
+						"value": "((auth.password))",
+						"type": "string"
+					},
+					{
+						"name": "db.port",
+						"value": "3306",
+						"type": "string"
+					},
+					{
+						"name": "db.name",
+						"value": "((auth.database))",
+						"type": "string"
+					},
+					{
+						"name": "persistence.enabled",
+						"value": false,
+						"type": "boolean"
+					},
+					{
+						"name": "gr.helm.wait.timeout",
+						"value": "2m",
+						"type": "string"
+					},
+					{
+						"name": "auth.rootPassword",
+						"value": "((db_root_password))",
+						"type": "string"
+					}
+				],
+				"deployment_strategy": {
+					"canaries": 1,
+					"max_in_flight": 1,
+					"canary_watch_time": "5000-30000",
+					"update_watch_time": "5000-30000",
+					"serial": false
+				},
+				"application_init": {},
+				"package_dependencies": [
+					"((application.name))",
+					"integration"
+				],
+				"instance_tags": [
+					{
+						"name": "application.name",
+						"value": "((application.name))"
+					}
+				],
+				"tasks": [],
+				"k8s_instance_groups": [
+					{
+						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
+						"docker_registry_alias_id": "cc9edc73-f30b-4c9a-5d01-e03f7930a904",
+						"name": "db-((application.name))",
+						"cluster_name": "",
+						"namespace": "((application.name))-((application.branch))",
+						"replicas": 1,
+						"containers": [
+							{
+								"name": "((application.name))",
+								"image": "guide-rails/((application.name)):((application.version))",
+								"ports": [
+									{
+										"name": "app",
+										"hostPort": 8005,
+										"containerPort": 8005,
+										"protocol": "TCP"
+									}
+								],
+								"resources": {},
+								"imagePullPolicy": "Always"
+							}
+						],
+						"ingress": {
+							"metadata": {
+								"creationTimestamp": null
+							},
+							"spec": {
+								"rules": [
+									{
+										"http": {
+											"paths": [
+												{
+													"path": "/",
+													"backend": {
+														"servicePort": 0
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"status": {
+								"loadBalancer": {}
+							}
+						},
+						"load_balancing_type": 2,
+						"service_name": "((application.name))-((application.branch))",
+						"type": "Deployment",
+						"deploy_application": false,
+						"helm_packages": [
+							{
+								"name": "mysql",
+								"type": 2,
+								"helmPackages": [
+									{
+										"pkg_source": 3,
+										"chart_name": "mysql",
+										"chart_version": "8.8.32",
+										"repository_url": "https://charts.bitnami.com/bitnami",
+										"release_name": "mysql-go-mysql-crud-int-((application.branch))"
+									}
+								]
+							}
+						],
+						"properties": [
+							{
+								"name": "service.annotations",
+								"value": "consul.hashicorp.com/service-name: mysql-go-mysql-crud-int-main"
+							}
+						]
+					},
+					{
+						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
+						"docker_registry_alias_id": "cc9edc73-f30b-4c9a-5d01-e03f7930a904",
+						"name": "((application.name))",
+						"cluster_name": "",
+						"namespace": "((application.name))-((application.branch))",
+						"replicas": 1,
+						"containers": [
+							{
+								"name": "((application.name))",
+								"image": "guide-rails/((application.name)):((application.version))",
+								"ports": [
+									{
+										"name": "app",
+										"hostPort": 8005,
+										"containerPort": 8005,
+										"protocol": "TCP"
+									}
+								],
+								"resources": {},
+								"imagePullPolicy": "Always"
+							}
+						],
+						"ingress": {
+							"metadata": {
+								"creationTimestamp": null
+							},
+							"spec": {
+								"rules": [
+									{
+										"http": {
+											"paths": [
+												{
+													"path": "/",
+													"backend": {
+														"servicePort": 0
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"status": {
+								"loadBalancer": {}
+							}
+						},
+						"load_balancing_type": 2,
+						"service_name": "((application.name))-((application.branch))",
+						"type": "Deployment",
+						"deploy_application": true,
+						"properties": [
+							{
+								"name": "consul.servicename",
+								"value": "((application.name))-int-((application.branch))"
+							}
+						]
+					}
+				],
+				"deployment_target": 2
 			},
 			{
 				"name": "Isolation",

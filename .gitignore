@@ -1,4 +1,4 @@
 /vendor
-/go-mysql-crud
+/**/go-mysql-crud
 .DS_Store
 .idea/

@@ -6,6 +6,7 @@ require (
 	github.com/go-chi/chi v1.5.4
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang/mock v1.6.0
+	github.com/spf13/cast v1.5.0
 	github.com/stretchr/testify v1.7.2
 )
 
