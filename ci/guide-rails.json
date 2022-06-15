@@ -61,6 +61,23 @@
 						"files": [
 							"test/integration/((application.name))-integration.test"
 						]
+					},
+					{
+						"name": "instrumented",
+						"downloads": [],
+						"files": [
+							"((application.name))-instrumented"
+						],
+						"type": 1
+					},
+					{
+						"name": "go-tools",
+						"downloads": [],
+						"files": [
+							"gocov*",
+							"go-junit-report"
+						],
+						"type": 1
 					}
 				],
 				"instance_tags": [
@@ -93,7 +110,13 @@
 							{
 								"name": "Convert coverage",
 								"definition": "Convert coverage",
-								"command": "cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\n#gocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
+								"command": "cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\ngocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
+								"properties": null
+							},
+							{
+								"name": "GetTools",
+								"definition": "GetTools",
+								"command": "go install github.com/axw/gocov/gocov@latest\ngo install github.com/AlekSi/gocov-xml@latest\ngo install github.com/jstemmer/go-junit-report@latest\ncp ${GOPATH}/bin/gocov* ${GOPATH}/bin/go-junit-report .",
 								"properties": null
 							},
 							{
@@ -107,6 +130,12 @@
 								"definition": "Build Integration Test",
 								"command": "cd test/integration\n\nCGO_ENABLED=0 GOOS=linux GOARCH=amd64 go test -a -tags netgo -ldflags '-w -extldflags \"-static\"' -c -coverpkg=all -covermode=count -o ((application.name))-integration.test",
 								"properties": []
+							},
+							{
+								"name": "Build Instrumented",
+								"definition": "Build Instrumented",
+								"command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go test -a -tags netgo -ldflags '-w -extldflags \"-static\"' -c -coverpkg \"$deps\" -covermode=count -o ((application.name))-instrumented",
+								"properties": null
 							}
 						],
 						"docker_options": {}
@@ -116,7 +145,6 @@
 			{
 				"name": "Integration",
 				"segment_type": "integration",
-				"persistent": false,
 				"run_after": [
 					"Build"
 				],
@@ -183,7 +211,9 @@
 				"application_init": {},
 				"package_dependencies": [
 					"((application.name))",
-					"integration"
+					"intergration",
+					"instrumented",
+					"go-tools"
 				],
 				"instance_tags": [
 					{
@@ -191,7 +221,6 @@
 						"value": "((application.name))"
 					}
 				],
-				"tasks": [],
 				"k8s_instance_groups": [
 					{
 						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
