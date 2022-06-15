@@ -221,6 +221,20 @@
 						"value": "((application.name))"
 					}
 				],
+				"tasks": [
+					{
+						"name": "IntegrationTest",
+						"steps": [
+							{
+								"name": "execute tests",
+								"definition": "execute tests",
+								"command": "bin/run-integration-tests.sh",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"k8s_instance_groups": [
 					{
 						"tool_config_alias_id": "2c99a7d3-76d8-40be-4d71-f7811bc9a338",
@@ -306,6 +320,10 @@
 							{
 								"name": "((application.name))",
 								"image": "guide-rails/((application.name)):((application.version))",
+								"command": [
+									"/bin/sh",
+									"((application.job.dir))/bin/start-instrumented.sh"
+								],
 								"ports": [
 									{
 										"name": "app",
