@@ -78,7 +78,6 @@ func Test_CreateWithEmptyDB(t *testing.T) {
 	defer mockCtl.Finish()
 	mockPostRepo := mock.NewMockPostRepo(mockCtl)
 
-	// mockPostRepo.EXPECT().Fetch(gomock.Any(), int64(5)).Return([]*models.Post{}, nil)
 	mockPostRepo.EXPECT().Create(gomock.Any(), mockPostRepo).Return(int64(1), nil)
 
 	response := httptest.NewRecorder()
@@ -94,8 +93,6 @@ func Test_CreateWithEmptyDB(t *testing.T) {
 
 	request, err := http.NewRequest("POST", "https://localhost/posts", strings.NewReader(`{"id": 1, "title": "title-1", "content": "content-1"`))
 	require.NoError(t, err)
-
-	pHandler.Fetch(response, request)
 
 	require.Equal(t, 200, response.Result().StatusCode)
 	require.NotEmpty(t, request)
