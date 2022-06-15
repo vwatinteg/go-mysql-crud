@@ -104,13 +104,13 @@
 							{
 								"name": "Unit Tests",
 								"definition": "Unit Tests",
-								"command": "set -o pipefail\nginkgo -cover -r -v -skipPackage=pb,test,mock,proto -outputdir=./ | tee ginkgo.output",
+								"command": "set -o pipefail\nginkgo -cover -r -v -skip-package=pb,test,mock,proto | tee ginkgo.output",
 								"properties": null
 							},
 							{
 								"name": "Convert coverage",
 								"definition": "Convert coverage",
-								"command": "cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\ngocov convert *.coverprofile | gocov-xml \u003e coverage.xml",
+								"command": "cat ginkgo.output 2\u003e\u00261 | go-junit-report \u003e test.xml\ngocov convert coverprofile.out | gocov-xml \u003e coverage.xml",
 								"properties": null
 							},
 							{

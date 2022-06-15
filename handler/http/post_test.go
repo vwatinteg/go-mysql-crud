@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -78,7 +79,13 @@ func Test_CreateWithEmptyDB(t *testing.T) {
 	defer mockCtl.Finish()
 	mockPostRepo := mock.NewMockPostRepo(mockCtl)
 
-	mockPostRepo.EXPECT().Create(gomock.Any(), mockPostRepo).Return(int64(1), nil)
+	payload := &models.Post{
+		ID:      1,
+		Title:   "title-1",
+		Content: "content-1",
+	}
+
+	mockPostRepo.EXPECT().Create(gomock.Any(), payload).Return(int64(1), nil)
 
 	response := httptest.NewRecorder()
 
@@ -90,11 +97,15 @@ func Test_CreateWithEmptyDB(t *testing.T) {
 	require.NotEmpty(t, pHandler)
 
 	pHandler.SetPostHandler(mockPostRepo)
-
-	request, err := http.NewRequest("POST", "https://localhost/posts", strings.NewReader(`{"id": 1, "title": "title-1", "content": "content-1"`))
+	jsonBytes, err := json.Marshal(payload)
 	require.NoError(t, err)
 
-	require.Equal(t, 200, response.Result().StatusCode)
+	request, err := http.NewRequest("POST", "https://localhost/posts", strings.NewReader(string(jsonBytes)))
+	require.NoError(t, err)
+
+	pHandler.Create(response, request)
+
+	require.Equal(t, 201, response.Result().StatusCode)
 	require.NotEmpty(t, request)
 }
 
