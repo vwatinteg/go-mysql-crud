@@ -2,3 +2,6 @@
 /**/go-mysql-crud
 .DS_Store
 .idea/
+ginkgo.output
+go-mysql-crud-instrumented
+test/integration/*-integration.test
