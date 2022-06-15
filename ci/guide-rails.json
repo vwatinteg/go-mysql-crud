@@ -322,7 +322,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"pushd ((application.job.dir))\ninitdb.sh\npopd\n\n\n((application.job.dir))/bin/start-instrumented.sh"
+									"curDir=\"${PWD}\"\ncd ((application.job.dir))\ninitdb.sh\ncd  \"${curDir}\"\n\n((application.job.dir))/bin/start-instrumented.sh"
 								],
 								"ports": [
 									{
@@ -552,7 +552,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"pushd ((application.job.dir))\ninitdb.sh\npopd\n\n/bin/go-mysql-crud"
+									"curDir=\"${PWD}\"\ncd ((application.job.dir))\ninitdb.sh\ncd  \"${curDir}\"\n\n/bin/go-mysql-crud"
 								],
 								"ports": [
 									{
