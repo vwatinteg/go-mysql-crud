@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function wait_for_dns {
     host=$(echo "$1" | awk -F ":" "{print \$1}")
