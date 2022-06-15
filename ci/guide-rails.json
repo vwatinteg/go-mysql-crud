@@ -104,7 +104,7 @@
 							{
 								"name": "Unit Tests",
 								"definition": "Unit Tests",
-								"command": "set -o pipefail\nginkgo -cover -r -v -skip-package=pb,test,mock,proto | tee ginkgo.output",
+								"command": "set -o pipefail\nginkgo -cover -r -v -skip-package=main,pb,test,mock,proto | tee ginkgo.output",
 								"properties": null
 							},
 							{
