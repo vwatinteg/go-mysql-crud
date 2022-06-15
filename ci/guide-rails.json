@@ -611,6 +611,14 @@
 			{
 				"source_path": "ci/bin/start-instrumented.sh",
 				"target_path": "bin/start-instrumented.sh"
+			},
+			{
+				"source_path": "ci/bin/init-db.sh",
+				"target_path": "bin/init-db.sh"
+			},
+			{
+				"source_path": "ci/bin/initdb.sql",
+				"target_path": "bin/initdb.sql"
 			}
 		],
 		"application_init": {}
