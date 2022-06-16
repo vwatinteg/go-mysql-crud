@@ -199,6 +199,16 @@
 						"name": "auth.rootPassword",
 						"value": "((db_root_password))",
 						"type": "string"
+					},
+					{
+						"name": "gr.dns.config.nameservers",
+						"value": "((consul.joinservers))",
+						"type": "string"
+					},
+					{
+						"name": "gr.dns.policy",
+						"value": "None",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
