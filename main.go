@@ -16,6 +16,10 @@ func main() {
 	dbPass := os.Getenv("DB_PASS")
 	dbHost := os.Getenv("DB_HOST")
 	dbPort := os.Getenv("DB_PORT")
+	serverPort := "8005"
+	if os.Getenv("SERVER_PORT") != "" {
+		serverPort = os.Getenv("SERVER_PORT")
+	}
 
 	connection, err := driver.ConnectSQL(dbHost, dbPort, "root", dbPass, dbName)
 
@@ -33,8 +37,8 @@ func main() {
 		rt.Mount("/posts", postRouter(pHandler))
 	})
 
-	fmt.Println("Server listen at :8005")
-	http.ListenAndServe(":8005", r)
+	fmt.Printf("Server listen at :%s\n", serverPort)
+	http.ListenAndServe(fmt.Sprintf(":%s", serverPort), r)
 }
 
 // A completely separate router for posts routes

@@ -6,23 +6,26 @@ import (
 	"os"
 	"testing"
 
-	"github.com/spf13/cast"
 	"github.com/stretchr/testify/require"
 )
 
 type testServer struct {
 	host string
-	port int32
+	port string
 }
 
 func getServerInfo(t *testing.T) *testServer {
 	svr := &testServer{
 		host: os.Getenv("SERVER_HOST"),
-		port: cast.ToInt32(os.Getenv("SERVER_PORT")),
+		port: os.Getenv("SERVER_PORT"),
 	}
 
 	if len(svr.host) == 0 {
 		svr.host = "localhost"
+	}
+
+	if len(svr.port) == 0 {
+		svr.port = "8005"
 	}
 
 	return svr
@@ -30,7 +33,7 @@ func getServerInfo(t *testing.T) *testServer {
 
 func Test_Get(t *testing.T) {
 	server := getServerInfo(t)
-	request, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s://%s:%d/%s", "http", server.host, server.port, "posts"), nil)
+	request, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s://%s:%s/%s", "http", server.host, server.port, "posts"), nil)
 	require.NoError(t, err)
 
 	response, err := http.DefaultClient.Do(request)
