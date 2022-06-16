@@ -33,7 +33,7 @@ file /usr/bin/mariadb
 
 set -e
 echo "$(date) ============== creating tables ==============="
-mysql -u "${DB_USER}" -p"${DB_ROOT_PASSWORD}" -h "${DB_HOST}" < "${APPLICATION_JOB_DIR}/bin/initdb.sql" && echo "Done initializing DB" || (echo "Failed initializing DB" && exit 1)
+mysql -u "root" -p"${DB_ROOT_PASSWORD}" -h "${DB_HOST}" < "${APPLICATION_JOB_DIR}/bin/initdb.sql" && echo "Done initializing DB" || (echo "Failed initializing DB" && exit 1)
 
 echo "$(date) ============== starting app ==============="
 /bin/go-mysql-crud
