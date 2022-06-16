@@ -145,6 +145,7 @@
 			{
 				"name": "Integration",
 				"segment_type": "integration",
+				"persistent": true,
 				"run_after": [
 					"Build"
 				],
@@ -222,7 +223,7 @@
 					},
 					{
 						"name": "server.host",
-						"value": "((consul.servicename))",
+						"value": "((consul.servicename)).query.consul",
 						"type": "string"
 					}
 				],
