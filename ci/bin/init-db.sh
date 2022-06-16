@@ -13,7 +13,7 @@ wait_for_dns(){
     echo "$(date) Waiting for ${host}"
     count=120
     while [ "${count}" -ge 0 ]; do
-        if nslookup "${host}"; then
+        if getent hosts "${host}"; then
             break
         fi
         sleep 1
