@@ -26,11 +26,14 @@ function wait_for_dns {
 
 set +e
 wait_for_dns "${DB_HOST}"
-set -e
 
 echo "$(date) ============== file mysql ==============="
-file mysql
+file /usr/bin/mysql
 
+echo "$(date) ============== file mariadb ==============="
+file /usr/bin/mariadb
+
+set -e
 echo "$(date) ============== creating tables ==============="
 mysql -u "${DB_USER}" -p"${DB_PASSWORD}" -h "${DB_HOST}" < "${APPLICATION_JOB_DIR}/bin/initdb.sql" && echo "Done initializing DB" || (echo "Failed initializing DB" && exit 1)
 
