@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache mysql-client file
+RUN apk add --no-cache mysql-client file mariadb-connector-c
 
 COPY dist/go-mysql-crud /bin/
 
