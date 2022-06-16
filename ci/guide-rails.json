@@ -238,7 +238,7 @@
 							{
 								"name": "execute tests",
 								"definition": "execute tests",
-								"command": "bin/run-integration-tests.sh",
+								"command": "bin/run-integration-test.sh",
 								"properties": null
 							}
 						],
