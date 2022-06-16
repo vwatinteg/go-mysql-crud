@@ -9,7 +9,7 @@ function wait_for_dns {
             break
         fi
         sleep 1
-        (( count-=1 ))
+        count=$((count-1))
     done
 }
 
