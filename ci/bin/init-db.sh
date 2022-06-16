@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 echo "Initializing DB"
 
 echo "$(date) ============== ENV ==============="
@@ -9,7 +7,6 @@ env
 
 echo "$(date) ============== mysql ==============="
 which mysql
-
 
 function wait_for_dns {
     host=$(echo "$1" | awk -F ":" "{print \$1}")
@@ -24,9 +21,10 @@ function wait_for_dns {
     done
 }
 
-set +e
 wait_for_dns "${DB_HOST}"
 
+set -x
+set +e
 echo "$(date) ============== file mysql ==============="
 file /usr/bin/mysql
 

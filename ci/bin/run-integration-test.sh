@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 wait_for_dns() {
     host=$(echo "$1" | awk -F ":" "{print \$1}")
     echo "$(date) Waiting for ${host}"
@@ -22,6 +20,8 @@ echo "$(date) Test cover - ${TEST_COVER}"
 
 wait_for_dns "${DB_HOST}"
 wait_for_dns "${CONSUL_SERVICENAME}.query.consul"
+
+set -x
 
 testBinary=$(find -L "${PKG_BASE_DIR}/integration" -type f -name "${APPLICATION_NAME}-integration.test")
 echo "$(date) ========================== Path to integration test binary - ${testBinary}  =========================="
