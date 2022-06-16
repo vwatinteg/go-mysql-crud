@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function wait_for_dns {
+wait_for_dns() {
     host=$(echo "$1" | awk -F ":" "{print \$1}")
     echo "Waiting for ${host}"
     count=120

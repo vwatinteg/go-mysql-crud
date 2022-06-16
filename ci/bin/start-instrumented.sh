@@ -2,19 +2,6 @@
 
 echo "$(date) --------------------- INSTRUMENTED SCRIPT --------------------"
 
-function wait_for_dns {
-    host=$(echo "$1" | awk -F ":" "{print \$1}")
-    echo "Waiting for ${host}"
-    count=120
-    while [ "${count}" -ge 0 ]; do
-        if nslookup "${host}"; then
-            break
-        fi
-        sleep 1
-        count=$((count-1))
-    done
-}
-
 echo "$(date) ************ SETTING THE GO PATH ************"
 export GOPATH="${PKG_BASE_DIR}/go-tools/go"
 echo "Go path is - ${GOPATH}"
