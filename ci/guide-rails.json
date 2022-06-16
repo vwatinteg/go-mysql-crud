@@ -167,7 +167,7 @@
 					},
 					{
 						"name": "db.host",
-						"value": "db-((application.name))-((application.branch)).query.consul",
+						"value": "db-((application.name))-int-((application.branch)).query.consul",
 						"type": "string"
 					},
 					{
@@ -304,8 +304,8 @@
 						],
 						"properties": [
 							{
-								"name": "service.annotations",
-								"value": "consul.hashicorp.com/service-name: mysql-go-mysql-crud-int-main"
+								"name": "primary.service.annotations",
+								"value": "consul.hashicorp.com/service-name: db-((application.name))-int-((application.branch))"
 							}
 						]
 					},
@@ -322,7 +322,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"ls -l ((application.job.dir))/bin"
+									"((application.job.dir))/bin/init-db.sh"
 								],
 								"ports": [
 									{
