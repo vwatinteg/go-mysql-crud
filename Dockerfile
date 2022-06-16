@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache mysql-client
+RUN apk add --no-cache mysql-client file
 
 COPY dist/go-mysql-crud /bin/
 

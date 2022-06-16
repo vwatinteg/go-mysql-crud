@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 echo "Initializing DB"
 
 echo "$(date) ============== ENV ==============="
@@ -25,6 +27,9 @@ function wait_for_dns {
 set +e
 wait_for_dns "${DB_HOST}"
 set -e
+
+echo "$(date) ============== file mysql ==============="
+file mysql
 
 echo "$(date) ============== creating tables ==============="
 mysql -u "${DB_USER}" -p"${DB_PASSWORD}" -h "${DB_HOST}" < "${APPLICATION_JOB_DIR}/bin/initdb.sql" && echo "Done initializing DB" || (echo "Failed initializing DB" && exit 1)
