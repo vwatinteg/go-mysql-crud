@@ -362,6 +362,7 @@
 								"imagePullPolicy": "Always"
 							}
 						],
+						"ingress_enabled": true,
 						"ingress": {
 							"metadata": {
 								"creationTimestamp": null
@@ -369,6 +370,7 @@
 							"spec": {
 								"rules": [
 									{
+										"host": "((application.name)).guide-rails.io",
 										"http": {
 											"paths": [
 												{
@@ -388,6 +390,15 @@
 						},
 						"load_balancing_type": 2,
 						"service_name": "((application.name))-((application.branch))",
+						"alb_ingress_controller_annotations": {
+							"alb.ingress.kubernetes.io/certificate-arn": "arn:aws:iam::818130157321:server-certificate/guide-rails-wildcard-20220726",
+							"alb.ingress.kubernetes.io/healthcheck-path": "/",
+							"alb.ingress.kubernetes.io/healthcheck-port": "traffic-port",
+							"alb.ingress.kubernetes.io/listen-ports": "[{\"HTTP\": 80}, {\"HTTPS\":443}]",
+							"alb.ingress.kubernetes.io/scheme": "public",
+							"alb.ingress.kubernetes.io/ssl-redirect": "443",
+							"alb.ingress.kubernetes.io/subnets": "subnet-07b5638c601772ae6, subnet-0e2334d4d4099bfcd"
+						},
 						"type": "Deployment",
 						"deploy_application": true
 					}
