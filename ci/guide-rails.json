@@ -162,7 +162,7 @@
 					},
 					{
 						"name": "auth.database",
-						"value": "go-mysql-crud",
+						"value": "go_mysql_crud",
 						"type": "string"
 					},
 					{
@@ -414,7 +414,7 @@
 					},
 					{
 						"name": "auth.database",
-						"value": "go-mysql-crud",
+						"value": "go_mysql_crud",
 						"type": "string"
 					},
 					{
