@@ -395,7 +395,7 @@
 							"alb.ingress.kubernetes.io/healthcheck-path": "/",
 							"alb.ingress.kubernetes.io/healthcheck-port": "traffic-port",
 							"alb.ingress.kubernetes.io/listen-ports": "[{\"HTTP\": 80}, {\"HTTPS\":443}]",
-							"alb.ingress.kubernetes.io/scheme": "public",
+							"alb.ingress.kubernetes.io/scheme": "internet-facing",
 							"alb.ingress.kubernetes.io/ssl-redirect": "443",
 							"alb.ingress.kubernetes.io/subnets": "subnet-07b5638c601772ae6, subnet-0e2334d4d4099bfcd"
 						},
