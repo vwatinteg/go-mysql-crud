@@ -552,7 +552,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"((application.job.dir))/bin/init-db.sh\n\n/bin/go-mysql-crud"
+									"((application.job.dir))/bin/init-db.sh"
 								],
 								"ports": [
 									{
