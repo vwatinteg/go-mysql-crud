@@ -214,6 +214,16 @@
 						"name": "gr.dns.policy",
 						"value": "None",
 						"type": "string"
+					},
+					{
+						"name": "server.port",
+						"value": "8005",
+						"type": "string"
+					},
+					{
+						"name": "server.host",
+						"value": "((consul.servicename))",
+						"type": "string"
 					}
 				],
 				"deployment_strategy": {
