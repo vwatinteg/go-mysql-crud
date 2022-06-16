@@ -1,8 +1,10 @@
 #!/bin/sh
 
+set -x
+
 wait_for_dns() {
     host=$(echo "$1" | awk -F ":" "{print \$1}")
-    echo "Waiting for ${host}"
+    echo "$(date) Waiting for ${host}"
     count=120
     while [ "${count}" -ge 0 ]; do
         if nslookup "${host}"; then
@@ -13,16 +15,16 @@ wait_for_dns() {
     done
 }
 
-echo "================ ENV =========================="
+echo "$(date) ================ ENV =========================="
 env
 
-echo "Test cover - ${TEST_COVER}"
+echo "$(date) Test cover - ${TEST_COVER}"
 
 wait_for_dns "${DB_HOST}"
 wait_for_dns "${CONSUL_SERVICENAME}.query.consul"
 
 testBinary=$(find -L "${PKG_BASE_DIR}/integration" -type f -name "${APPLICATION_NAME}-integration.test")
-echo "========================== Path to integration test binary - ${testBinary}  =========================="
+echo "$(date) ========================== Path to integration test binary - ${testBinary}  =========================="
 
 "${testBinary}" -test.v args | tee "${APPLICATION_LOGS_DIR}/integration_test.log"
 
