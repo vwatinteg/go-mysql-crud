@@ -322,7 +322,7 @@
 								"image": "guide-rails/((application.name)):((application.version))",
 								"command": [
 									"/bin/sh",
-									"((application.job.dir))/bin/init-db.sh\n((application.job.dir))/bin/start-instrumented.sh"
+									"echo listing files in ((application.job.dir))/bin\nls -l ((application.job.dir))/bin\n((application.job.dir))/bin/init-db.sh\n((application.job.dir))/bin/start-instrumented.sh"
 								],
 								"ports": [
 									{
