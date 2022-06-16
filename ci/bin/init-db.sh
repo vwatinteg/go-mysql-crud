@@ -8,7 +8,7 @@ env
 echo "$(date) ============== mysql ==============="
 which mysql
 
-function wait_for_dns {
+wait_for_dns(){
     host=$(echo "$1" | awk -F ":" "{print \$1}")
     echo "$(date) Waiting for ${host}"
     count=120
