@@ -374,7 +374,7 @@
 										"http": {
 											"paths": [
 												{
-													"path": "/",
+													"path": "/posts",
 													"backend": {
 														"servicePort": 0
 													}
