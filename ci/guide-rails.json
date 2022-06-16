@@ -56,7 +56,7 @@
 						}
 					},
 					{
-						"name": "intergration",
+						"name": "integration",
 						"downloads": [],
 						"files": [
 							"test/integration/((application.name))-integration.test"
@@ -226,9 +226,9 @@
 				"application_init": {},
 				"package_dependencies": [
 					"((application.name))",
-					"intergration",
 					"instrumented",
-					"go-tools"
+					"go-tools",
+					"integration"
 				],
 				"instance_tags": [
 					{
@@ -378,8 +378,7 @@
 						"load_balancing_type": 2,
 						"service_name": "((application.name))-((application.branch))",
 						"type": "Deployment",
-						"deploy_application": true,
-						"properties": []
+						"deploy_application": true
 					}
 				],
 				"deployment_target": 2
