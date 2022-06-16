@@ -370,7 +370,7 @@
 							"spec": {
 								"rules": [
 									{
-										"host": "((application.name)).guide-rails.io",
+										"host": "((application.name))-int.guide-rails.io",
 										"http": {
 											"paths": [
 												{
