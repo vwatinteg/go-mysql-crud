@@ -487,9 +487,9 @@
 						"name": "isolation",
 						"steps": [
 							{
-								"name": "check",
-								"definition": "check",
-								"command": "echo \"Testing DNS ${DB_HOST}\"\ngetent hosts ${DB_HOST}\n",
+								"name": "run tests",
+								"definition": "run tests",
+								"command": "bin/run-integration-test.sh",
 								"properties": null
 							}
 						],
