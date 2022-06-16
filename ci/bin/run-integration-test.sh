@@ -13,15 +13,10 @@ wait_for_dns() {
     done
 }
 
-echo "$(date) ================ ENV =========================="
-env
-
 echo "$(date) Test cover - ${TEST_COVER}"
 
 wait_for_dns "${DB_HOST}"
 wait_for_dns "${CONSUL_SERVICENAME}.query.consul"
-
-set -x
 
 testBinary=$(find -L "${PKG_BASE_DIR}/integration" -type f -name "${APPLICATION_NAME}-integration.test")
 echo "$(date) ========================== Path to integration test binary - ${testBinary}  =========================="
