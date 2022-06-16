@@ -420,7 +420,7 @@
 					},
 					{
 						"name": "db.host",
-						"value": "mysql-go-mysql-crud-iso-main.((consul.domainname))",
+						"value": "mysql-go-mysql-crud-iso-main.((application.name))-((application.branch)).svc.cluster.local",
 						"type": "string"
 					},
 					{
@@ -451,11 +451,6 @@
 					{
 						"name": "auth.rootPassword",
 						"value": "((db_root_password))",
-						"type": "string"
-					},
-					{
-						"name": "consul.domainname",
-						"value": "svc.cluster.local",
 						"type": "string"
 					}
 				],
