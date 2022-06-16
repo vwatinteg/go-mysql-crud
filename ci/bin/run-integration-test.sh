@@ -13,6 +13,9 @@ wait_for_dns() {
     done
 }
 
+echo "================ ENV =========================="
+env
+
 echo "Test cover - ${TEST_COVER}"
 
 wait_for_dns "${DB_HOST}"

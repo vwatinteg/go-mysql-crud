@@ -201,6 +201,11 @@
 						"type": "string"
 					},
 					{
+						"name": "consul.servicename",
+						"value": "((application.name))-int-((application.branch))",
+						"type": "string"
+					},
+					{
 						"name": "gr.dns.config.nameservers",
 						"value": "((consul.joinservers))",
 						"type": "string"
@@ -374,12 +379,7 @@
 						"service_name": "((application.name))-((application.branch))",
 						"type": "Deployment",
 						"deploy_application": true,
-						"properties": [
-							{
-								"name": "consul.servicename",
-								"value": "((application.name))-int-((application.branch))"
-							}
-						]
+						"properties": []
 					}
 				],
 				"deployment_target": 2
