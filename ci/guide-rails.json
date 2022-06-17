@@ -430,7 +430,7 @@
 					},
 					{
 						"name": "db.host",
-						"value": "mysql-iso-((application.branch)).((application.name))-((application.branch)).svc.cluster.local",
+						"value": "mysql-go-mysql-crud-iso-main.((application.name))-((application.branch)).svc.cluster.local",
 						"type": "string"
 					},
 					{
@@ -563,7 +563,7 @@
 										"chart_name": "mysql",
 										"chart_version": "8.8.32",
 										"repository_url": "https://charts.bitnami.com/bitnami",
-										"release_name": "mysql-iso-((application.branch))"
+										"release_name": "mysql-go-mysql-crud-iso-main"
 									}
 								]
 							}
