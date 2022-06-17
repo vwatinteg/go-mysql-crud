@@ -464,11 +464,6 @@
 						"type": "string"
 					},
 					{
-						"name": "server.port",
-						"value": "8005",
-						"type": "string"
-					},
-					{
 						"name": "server.host",
 						"value": "((application.name))-iso.guide-rails.io",
 						"type": "string"
