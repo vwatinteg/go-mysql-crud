@@ -567,12 +567,6 @@
 									}
 								]
 							}
-						],
-						"properties": [
-							{
-								"name": "primary.service.annotations",
-								"value": "consul.hashicorp.com/service-name:  db-((application.name))-((application.branch))"
-							}
 						]
 					},
 					{
