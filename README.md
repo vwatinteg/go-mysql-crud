@@ -1,6 +1,7 @@
 # go-mysql-crud
-Sample crud operation using Golang and MySQL. This tutorial will pull a MySQL chart as it's dependency and deploy it with the application into
-a Kubernetes cluster.
+Sample crud operation using Golang and MySQL. This tutorial will pull a MySQL chart as it's dependency and deploy it with the application into a Kubernetes cluster. The Isolation segment demonstrates deploying to the cluster using kube DNS for service communication and an ingress to hit the application. The integration segment demonstrates deployment using consul for service communication.
+
+Note if you are onboarding the pipeline and deploying to a Guide-Rails® provisioned cluster, the segment will pass as a Guide-Rails® provisioned cluster will have consul installed already. If the deployment is going into a non Guide-Rails® provisioned cluster, the segment will fail.
 
 ## API ENDPOINTS
 
