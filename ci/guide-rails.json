@@ -470,7 +470,7 @@
 					},
 					{
 						"name": "server.host",
-						"value": "((application.name))-int.guide-rails.io",
+						"value": "((application.name))-iso.guide-rails.io",
 						"type": "string"
 					}
 				],
