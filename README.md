@@ -3,6 +3,8 @@ Sample crud operation using Golang and MySQL. This tutorial will pull a MySQL ch
 
 ![ChartDependency](/img/chart_dependency.png)
 
+Tasks defined in the Build segment demonstrate some common build tasks and tasks in deployment segmnets (Isolation, Integration, Release, or Production) are tasks which will run *post* deployment.
+
 The Isolation segment demonstrates deploying to the cluster using kube DNS for service communication and an ingress to hit the application. The Integration segment demonstrates deployment using consul for service communication. These configurations can be viewed in the segment's instance group configuration.
 
 **Note 1**: This pipeline has defined secret properties and the following *secret properties* need to be defined at the **component level**
