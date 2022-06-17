@@ -1,24 +1,22 @@
 # go-mysql-crud
-Sample crud operation using Golang and MySQL. This tutorial will pull a MySQL chart as it's dependency and deploy it with the application into a Kubernetes cluster. An example of pulling in the chart as an dependency can be viewed in the 'Packages' section under the Build segment.
+Sample crud operation using Golang ‘post’ Microservice and a MySQL database. This tutorial will pull a MySQL chart as it's dependency and deploy it with the application into a Kubernetes cluster. MySQL can be it's own pipeline in Guide-Rails® which builds and tests MySQL version(s), but for this example it imports a public chart. An example of pulling in the chart as an dependency which can be viewed in the 'Packages' section under the 'post' Microservice Build segment.
+
 
 ![ChartDependency](/img/chart_dependency.png)
 
-Tasks defined in the Build segment demonstrate some common build tasks and tasks in deployment segmnets (Isolation, Integration, Release, or Production) are tasks which will run *post* deployment.
+Tasks defined in the Build segment demonstrate some common build tasks for building artifacts and tasks in deployment segments (Isolation, Integration, Release, or Production) are tasks which will test 'post' microservice after deployment.
 
-The Isolation segment demonstrates deploying to the cluster using kube DNS for service communication and an ingress to hit the application. The Integration segment demonstrates deployment using consul for service communication. These configurations can be viewed in the segment's instance group configuration.
+The Isolation segment demonstrates deploying to the cluster using kube DNS for service registration, discovery and an ingress (public DNS) to hit the application. The Integration segment demonstrates ephemeral test enviroment for a specific run using consul for service registration, discovery. These configurations can be viewed in the segment's instance group configuration.
 
 **Note 1**: This pipeline has defined secret properties and the following *secret properties* need to be defined at the **component level**
 
 ![CompoentLevel](/img/component_level.png)
 
-Secrets defined on the branch level will be written to the ci/guide-rails.json file **IN THE CLEAR**
+Any property defined at branch level and below (e.g. segment/job level) are plan text and source code controled
     
     * db_root_password
     * db_user
     * db_user_password
-
-**Note 2**: if you are onboarding the pipeline and deploying to a Guide-Rails® provisioned cluster, the segment will pass as a Guide-Rails® provisioned cluster will have consul installed already. If the deployment is going into a non Guide-Rails® provisioned cluster, the segment will fail.
-
 
 
 ## API ENDPOINTS

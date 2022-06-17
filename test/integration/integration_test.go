@@ -24,16 +24,20 @@ func getServerInfo(t *testing.T) *testServer {
 		svr.host = "localhost"
 	}
 
-	if len(svr.port) == 0 {
-		svr.port = "8005"
-	}
-
 	return svr
 }
 
 func Test_Get(t *testing.T) {
 	server := getServerInfo(t)
-	request, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s://%s:%s/%s", "http", server.host, server.port, "posts"), nil)
+
+	url := fmt.Sprintf("http://%s", server.host)
+	if len(server.port) > 0 {
+		url = fmt.Sprintf("%s:%s", url, server.port)
+	}
+
+	url += "/posts"
+
+	request, err := http.NewRequest(http.MethodGet, url, nil)
 	require.NoError(t, err)
 
 	response, err := http.DefaultClient.Do(request)
