@@ -18,6 +18,14 @@ Any property defined at branch level and below (e.g. segment/job level) are plan
     * db_user
     * db_user_password
 
+## Pipeline Notes
+This tutorial is based off of a Guide-Rails® provisioned Kubernetes cluster in AWS which has additional add-ons installed and configured on the cluster. 
+Additional addons installed:
+
+    * Consul
+    * externalDNS
+    * aws-loadbalancer-controller
+
 
 ## API ENDPOINTS
 
@@ -53,5 +61,4 @@ Any property defined at branch level and below (e.g. segment/job level) are plan
     * [MySql](https://github.com/go-sql-driver/mysql)
 - Routing
     * [chi](https://github.com/go-chi/chi)
-
 
