@@ -483,7 +483,8 @@
 				},
 				"application_init": {},
 				"package_dependencies": [
-					"((application.name))"
+					"((application.name))",
+					"integration"
 				],
 				"instance_tags": [
 					{
